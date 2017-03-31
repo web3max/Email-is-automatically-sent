@@ -1,0 +1,2 @@
+# Redis-publishes-subscriptions
+Python_MySQL_Redis实现Email发布订阅
