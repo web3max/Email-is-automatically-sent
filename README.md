@@ -1,5 +1,6 @@
 # Redis-publishes-subscriptions
 Python_MySQL_Redis实现Email发布订阅
+
 标签： Python	标签： MySQL	标签： Redis	标签： Email
 
 ### 1. 安装pip
