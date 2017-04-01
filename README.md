@@ -1,8 +1,6 @@
 # Redis-publishes-subscriptions
 Python_MySQL_Redis实现Email发布订阅
 
-标签： Python	标签： MySQL	标签： Redis	标签： Email
-
 ### 1. 安装pip
 windows 安装时pip默认安装；自定义安装请勾选安装pip选项
 
@@ -24,14 +22,14 @@ windows 安装时pip默认安装；自定义安装请勾选安装pip选项
 * python -V
 
 ### 6. 查看Python安装路径
-1. Python交互模式下查看Python安装路径
+**1. Python交互模式下查看Python安装路径**
 ```
     >>> import sys
     >>> path = sys.executable
     >>> print(path)
 ```
 
-2. Linux命令行模式下查看Python安装路径
+**2. Linux命令行模式下查看Python安装路径**
 * which python
 
 
