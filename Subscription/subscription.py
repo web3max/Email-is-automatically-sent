@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+import sys
+sys.path.append("E:\Python\Redis-publishes-subscriptions")  # 导入自己编写的模块，填入项目模块对应存放路径
 from Model.redisDb import *
 import json
 from Model.db import *
@@ -13,7 +15,7 @@ redisConf = config.redis_conf()
 r = RedisDb().connection
 
 # 订阅频道应该要和发布的频道一样，否则将无法订阅到发布者发布的消息
-# 订阅所有频道
+# 这里订阅了配置文件中的所有频道
 channel = redisConf['channel']
 
 # 创建监听实例

@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-
+import sys
+sys.path.append("E:\Python\Redis-publishes-subscriptions")  # 导入自己编写的模块，填入项目模块对应存放路径
 import smtplib
 from email.header import Header
 from email.mime.text import MIMEText
@@ -175,8 +176,8 @@ class Email():
         # 添加邮件主题
         msg['Subject'] = Header(mnsSetting.MNSName, 'utf-8').encode()
         try:
-            server = smtplib.SMTP()
-            server.connect(emailConf['stmp'])
+            server = smtplib.SMTP(emailConf['stmp'], emailConf['port'])
+            server.ehlo()
             # 创建SSL安全连接
             server.starttls()
             server.set_debuglevel(1)
@@ -186,5 +187,5 @@ class Email():
             sendMsg = {'SubStatus': 'Y', 'SubContent': '{"status":"Y",content:"邮件发送成功"}', 'ErrContent': ''}
             return sendMsg
         except smtplib.SMTPException as e:
-            sendMsg = {'SubStatus': 'N', 'SubContent': '{"status":"N",content:"邮件发送失败"}', 'ErrContent': e}
+            sendMsg = {'SubStatus': 'N', 'SubContent': '{"status":"N",content:"邮件发送失败"}', 'ErrContent': str(e)}
             return sendMsg

@@ -30,10 +30,9 @@ class Config:
     def email_conf(self):
         emailConf = {
             'sender': '',  # 发件人
-            'stmp': 'smtp.qq.com',  # smtp地址
+            'stmp': 'smtp.qq.com',  # QQ邮箱SMTP地址
             'username': '',  # 登陆名
             'password': '',  # 登录口令
-            'smtp_secure': 'ssl',  # 安全ssl
-            'port': '465',  # QQ邮箱端口
+            'port': 587  # QQ邮箱SMTP端口
         }
         return emailConf
