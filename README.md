@@ -23,14 +23,11 @@ windows 安装时pip默认安装；自定义安装请勾选安装pip选项
 
 ### 查看Python安装路径
 #### Python交互模式下查看Python安装路径
-`
+``
     >>> import sys
-
     >>> path = sys.executable
-
     >>> print(path)
-    
-`
+``
 
 #### linux命令行模式下查看Python安装路径
 * which python
