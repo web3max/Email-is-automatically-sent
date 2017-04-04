@@ -1,5 +1,5 @@
-# Redis-publishes-subscriptions
-Python_MySQL_Redis实现Email发布订阅
+# Email-is-automatically-sent
+结合Python、MySQL、Redis发布订阅功能，实现Email自动发送
 
 ### 1. 安装pip
 windows 安装时pip默认安装；自定义安装请勾选安装pip选项
