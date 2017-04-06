@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-
-from sqlalchemy import BigInteger, Column, DateTime, Float, Integer, Numeric, String, Table, text
+from sqlalchemy import Column, DateTime, Integer, Numeric, String, text
 from sqlalchemy.ext.declarative import declarative_base
 
 # 创建对象的基类:
 Base = declarative_base()
 metadata = Base.metadata
+
 
 class HlhGiftcard(Base):
     __tablename__ = 'hlh_giftcard'
@@ -28,7 +28,7 @@ class HlhGiftcard(Base):
     CreateBy = Column(String(10))
     CreateDate = Column(DateTime)
     LastUpdBy = Column(String(10))
-    LastUpdDt = Column(DateTime, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
+    LastUpdDt = Column(DateTime)
     CustomerName = Column(String(20), index=True)
     cust_id = Column(Integer, index=True)
 
@@ -48,7 +48,7 @@ class HlhGiftcardexchg(Base):
     CreateBy = Column(String(10))
     CreateDate = Column(DateTime)
     LastUpdBy = Column(String(10))
-    LastUpdDt = Column(DateTime, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
+    LastUpdDt = Column(DateTime)
     ShippingTo = Column(String(10))
     ProductImage = Column(String(120))
     Province = Column(String(20))
@@ -73,7 +73,7 @@ class HlhMnssetting(Base):
     CreateBy = Column(String(10))
     CreateDate = Column(DateTime)
     LastUpdBy = Column(String(10))
-    LastUpdDt = Column(DateTime, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
+    LastUpdDt = Column(DateTime)
 
 
 class HlhMnssublog(Base):
@@ -106,7 +106,7 @@ class HlhSchema(Base):
     CreateBy = Column(String(10))
     CreateDate = Column(DateTime)
     LastUpdBy = Column(String(10))
-    LastUpdDt = Column(DateTime, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
+    LastUpdDt = Column(DateTime)
     Customer_id = Column(Integer)
     MareketPrice = Column(Numeric(8, 2))
     StckOnHand = Column(Integer, server_default=text("'0'"))
@@ -119,16 +119,3 @@ class HlhSchema(Base):
     outcolorcode = Column(String(10))
     VcardTxt = Column(String(400))
     cust_id = Column(Integer, index=True)
-
-
-t_v_sxs_customer = Table(
-    'v_sxs_customer', metadata,
-    Column('id', Integer, server_default=text("'0'")),
-    Column('customer_code', String(20)),
-    Column('username', String(60)),
-    Column('customer_name', String(333)),
-    Column('phone', BigInteger),
-    Column('crdt_points_limit', Float(10)),
-    Column('crdt_points_total', Float(10)),
-    Column('fid', Integer)
-)

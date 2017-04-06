@@ -187,5 +187,5 @@ class Email():
             sendMsg = {'SubStatus': 'Y', 'SubContent': '{"status":"Y",content:"邮件发送成功"}', 'ErrContent': ''}
             return sendMsg
         except smtplib.SMTPException as e:
-            sendMsg = {'SubStatus': 'N', 'SubContent': '{"status":"N",content:"邮件发送失败"}', 'ErrContent': str(e)}
+            sendMsg = {'SubStatus': 'N', 'SubContent': '{"status":"N",content:"邮件发送失败"}', 'ErrContent': json.dumps(e)}
             return sendMsg

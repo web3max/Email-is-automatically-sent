@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : localhost
-Source Server Version : 50714
-Source Host           : localhost:3306
-Source Database       : pyemail
+Source Server         : 腾讯云
+Source Server Version : 50536
+Source Host           : 119.29.175.124:3306
+Source Database       : pythonemail
 
 Target Server Type    : MYSQL
-Target Server Version : 50714
+Target Server Version : 50536
 File Encoding         : 65001
 
-Date: 2017-03-31 22:06:14
+Date: 2017-04-06 22:17:59
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -37,7 +37,7 @@ CREATE TABLE `hlh_giftcard` (
   `CreateBy` varchar(10) DEFAULT NULL COMMENT '创建人',
   `CreateDate` datetime DEFAULT NULL COMMENT '创建时间',
   `LastUpdBy` varchar(10) DEFAULT NULL COMMENT '最后更新人',
-  `LastUpdDt` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '最后更新时间',
+  `LastUpdDt` datetime DEFAULT NULL COMMENT '最后更新时间',
   `CustomerName` varchar(20) DEFAULT NULL COMMENT '客户名称',
   `cust_id` int(10) DEFAULT NULL COMMENT '客户id',
   PRIMARY KEY (`ID`),
@@ -48,7 +48,7 @@ CREATE TABLE `hlh_giftcard` (
   KEY `Idx_HLH_GiftCard_IsShipping` (`IsShipping`),
   KEY `Idx_HLH_GiftCard_cust_id` (`cust_id`),
   KEY `Idx_HLH_GiftCard_CustomerName` (`CustomerName`)
-) ENGINE=InnoDB AUTO_INCREMENT=607 DEFAULT CHARSET=utf8 COMMENT='实体卡表';
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='实体卡表';
 
 -- ----------------------------
 -- Records of hlh_giftcard
@@ -72,7 +72,7 @@ CREATE TABLE `hlh_giftcardexchg` (
   `CreateBy` varchar(10) DEFAULT NULL COMMENT '创建人',
   `CreateDate` datetime DEFAULT NULL COMMENT '创建时间',
   `LastUpdBy` varchar(10) DEFAULT NULL COMMENT '最后更新人',
-  `LastUpdDt` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '最后更新时间',
+  `LastUpdDt` datetime DEFAULT NULL COMMENT '最后更新时间',
   `ShippingTo` varchar(10) DEFAULT NULL COMMENT '发货人',
   `ProductImage` char(120) DEFAULT NULL COMMENT '产品图片暂时使用传数据用，后期可删除',
   `Province` varchar(20) DEFAULT NULL COMMENT '省份',
@@ -82,7 +82,7 @@ CREATE TABLE `hlh_giftcardexchg` (
   `ShippingRemark` varchar(200) DEFAULT NULL COMMENT '收礼人发货备注',
   PRIMARY KEY (`ID`),
   KEY `idx_HLH_GiftCardExchg_GiftCardID` (`GiftCardID`)
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8 COMMENT='礼品卡兑换信息表';
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='礼品卡兑换信息表';
 
 -- ----------------------------
 -- Records of hlh_giftcardexchg
@@ -106,10 +106,10 @@ CREATE TABLE `hlh_mnssetting` (
   `CreateBy` varchar(10) DEFAULT NULL COMMENT '创建人',
   `CreateDate` datetime DEFAULT NULL COMMENT '创建时间',
   `LastUpdBy` varchar(10) DEFAULT NULL COMMENT '最后更新人',
-  `LastUpdDt` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '最后更新时间',
+  `LastUpdDt` datetime DEFAULT NULL COMMENT '最后更新时间',
   PRIMARY KEY (`ID`),
   UNIQUE KEY `IDX_HLH_MNSSetting_MNSCode` (`MNSCode`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of hlh_mnssetting
@@ -133,14 +133,12 @@ CREATE TABLE `hlh_mnssublog` (
   PRIMARY KEY (`ID`),
   KEY `idx_HLH_MNSSubLog_MNSSubID` (`MNSSubID`),
   KEY `idx_HLH_MNSSubLog_MNSPubID` (`MNSPubID`)
-) ENGINE=InnoDB AUTO_INCREMENT=83 DEFAULT CHARSET=utf8 COMMENT='订阅日志者日志';
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='订阅日志者日志';
 
 -- ----------------------------
 -- Records of hlh_mnssublog
 -- ----------------------------
-INSERT INTO `hlh_mnssublog` VALUES ('80', '283', '2', '2017-03-31 21:09:21', '{\"status\":\"Y\",content:\"邮件发送成功\"}', 'Y', '');
-INSERT INTO `hlh_mnssublog` VALUES ('81', '283', '2', '2017-03-31 21:09:54', '{\"status\":\"Y\",content:\"邮件发送成功\"}', 'Y', '');
-INSERT INTO `hlh_mnssublog` VALUES ('82', '283', '2', '2017-03-31 21:09:07', '{\"status\":\"Y\",content:\"邮件发送成功\"}', 'Y', '');
+INSERT INTO `hlh_mnssublog` VALUES ('97', '283', '3', '2017-04-06 21:09:13', '{\"status\":\"Y\",content:\"邮件发送成功\"}', 'Y', '');
 
 -- ----------------------------
 -- Table structure for hlh_schema
@@ -162,7 +160,7 @@ CREATE TABLE `hlh_schema` (
   `CreateBy` varchar(10) DEFAULT NULL COMMENT '创建人',
   `CreateDate` datetime DEFAULT NULL COMMENT '创建时间',
   `LastUpdBy` varchar(10) DEFAULT NULL COMMENT '最后更新人',
-  `LastUpdDt` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '最后更新时间',
+  `LastUpdDt` datetime DEFAULT NULL COMMENT '最后更新时间',
   `Customer_id` int(10) DEFAULT NULL COMMENT '客户id',
   `MareketPrice` decimal(8,2) DEFAULT NULL COMMENT '市场价格',
   `StckOnHand` int(10) DEFAULT '0' COMMENT '方案库存',
@@ -178,333 +176,10 @@ CREATE TABLE `hlh_schema` (
   PRIMARY KEY (`ID`),
   KEY `idx_HLH_Schema_cust_id` (`cust_id`),
   KEY `idx_HLH_Schema_CustomerName` (`CustomerName`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='好礼汇V卡方案';
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='好礼汇V卡方案';
 
 -- ----------------------------
 -- Records of hlh_schema
 -- ----------------------------
 INSERT INTO `hlh_schema` VALUES ('9', 'G000005', 'GEN', '指纹', 'ONL', 'Max', 'Heka:170322_shine', 'Plan:birth108', '100.00', '你好', '七情不昧四重恩，八筏常归十界魂。负业诸尘贤劫渡，无边水月大千存。', '你好', 'admin', '2017-03-06 17:50:47', '', '2017-03-31 21:51:45', null, null, '0', null, null, null, null, null, null, null, null, '14');
-
--- ----------------------------
--- View structure for v_sxs_customer
--- ----------------------------
-DROP VIEW IF EXISTS `v_sxs_customer`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`%` SQL SECURITY DEFINER VIEW `v_sxs_customer` AS select `hc`.`id` AS `id`,`hc`.`customer_code` AS `customer_code`,`hu`.`username` AS `username`,`hc`.`customer_name` AS `customer_name`,`hu`.`phone` AS `phone`,`hc`.`crdt_points_limit` AS `crdt_points_limit`,`hc`.`crdt_points_total` AS `crdt_points_total`,`hc`.`fid` AS `fid` from ((`hlh_customer` `hc` join `hlh_users_customer` `huc` on((`hc`.`id` = `huc`.`cust_id`))) join `hlh_users` `hu` on((`huc`.`users_id` = `hu`.`id`))) where (`hc`.`customer_type` = 'SXS') ;
-
--- ----------------------------
--- Procedure structure for Active_Card
--- ----------------------------
-DROP PROCEDURE IF EXISTS `Active_Card`;
-DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Active_Card`(pi_cardid int,
-pi_ActiveBy varchar(10),
-pi_PaymentType varchar(6),
-OUT t_error int,
-OUT t_msg varchar(200))
-label_exit:
-  BEGIN
-    DECLARE l_saleprice decimal(8, 2);
-    DECLARE l_IsActive varchar(10);
-    DECLARE l_count int;
-    /*异常处理*/
-    DECLARE EXIT HANDLER FOR SQLEXCEPTION
-    BEGIN
-      GET DIAGNOSTICS CONDITION 1 t_msg = MESSAGE_TEXT;
-      /*数据回滚*/
-      ROLLBACK;
-      SET t_error = 1;
-
-
-    END;
-    DECLARE EXIT HANDLER FOR NOT FOUND
-    BEGIN
-      SET t_error = 1;
-      SET t_msg = '没有找到相应数据';
-    END;
-    SET t_error = 0;
-    /*礼品卡销售价格及激活状态*/
-    SELECT
-      SalePrice,
-      IsActive INTO l_saleprice, l_IsActive
-    FROM hlh_giftcard hg
-    WHERE hg.id = pi_cardid;
-
-
-    IF l_IsActive <> 'N' THEN
-      SET t_error = 1;
-      SET t_msg = '卡已激活';
-      LEAVE label_exit;
-    END IF;
-
-    /*激活类型*/
-    SELECT
-      COUNT(1) INTO l_count
-    FROM hlh_dict
-    WHERE GroupNO = '006'
-    AND AttrValue = pi_PaymentType;
-
-    IF l_count = 0 THEN
-      SET t_error = 1;
-      SET t_msg = '激活类型不正确';
-      LEAVE label_exit;
-    END IF;
-    START TRANSACTION;
-      /*更新激活状态*/
-      UPDATE hlh_giftcard hg
-      SET IsActive = 'Y',
-          ActiveBy = pi_ActiveBy,
-          ActiveDate = SYSDATE(),
-          LastUpdBy = pi_ActiveBy,
-          LastUpdDt = SYSDATE()
-      WHERE id = pi_cardid;
-      /*插入激活记录*/
-      INSERT INTO HLH_GiftCard_PayOrder (SalePrice, ActiveBy, ActiveDate, PaymentType, CardId)
-        SELECT
-          SalePrice,
-          pi_ActiveBy,
-          SYSDATE(),
-          pi_PaymentType,
-          pi_cardid
-        FROM hlh_giftcard
-        WHERE id = pi_cardid;
-      /*提交数据*/
-      IF t_error = 1 THEN
-        ROLLBACK;
-      ELSE
-      COMMIT;
-    END IF;
-  END
-;;
-DELIMITER ;
-
--- ----------------------------
--- Procedure structure for Gen_CodeNoByRule
--- ----------------------------
-DROP PROCEDURE IF EXISTS `Gen_CodeNoByRule`;
-DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Gen_CodeNoByRule`(IN pi_seq char(3),OUT po_codeno varchar(20))
-BEGIN
-  DECLARE l_ruleconet varchar(200);/*规则内容*/
-  SELECT hc.rulecontent INTO l_ruleconet FROM hlh_coderule hc WHERE hc.CodeNo=pi_seq;
-  SET @sqlstr  =  CONCAT("select ",l_ruleconet," into @rslvalue from dual"); 
-  PREPARE stmt FROM @sqlstr; 
-  EXECUTE stmt; 
-  deallocate prepare stmt; 
-  SET po_codeno := @rslvalue; 
-
-END
-;;
-DELIMITER ;
-
--- ----------------------------
--- Procedure structure for Gen_giftcardBtch
--- ----------------------------
-DROP PROCEDURE IF EXISTS `Gen_giftcardBtch`;
-DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Gen_giftcardBtch`(IN pi_SchemaID int, IN pi_CardName varchar(20), IN pi_CreateBy varchar(10), IN pi_num int, OUT t_error int)
-BEGIN
-  DECLARE l_SalePrice decimal(8, 2);
-  DECLARE l_ExchgCode varchar(10);
-  DECLARE i int;
-  DECLARE l_exchgid int;
-  DECLARE l_lastcardid int;
-  DECLARE l_carno varchar(20);
-
-  
-  DECLARE exit  HANDLER FOR SQLEXCEPTION
-  BEGIN
-    ROLLBACK;
-    SET t_error = 1;
-  END;
-
-  SET t_error = 0;
-  /*错误信息*/
-
-  SELECT
-    price INTO l_SalePrice
-  FROM hlh_schema
-  WHERE id = pi_SchemaID;
-
-  SET i = 1;
-
-  /*循环记录*/
-  WHILE i <= pi_num DO
-    SELECT
-      ExchgCode,
-      id INTO l_ExchgCode, l_exchgid
-    FROM hlh_exchgcodestck
-    WHERE ISUsed = 'N'
-    LIMIT 1;
-    SELECT
-      LPAD(nextval('seq_cardno'), 10, '0') INTO l_carno;
-    START TRANSACTION;
-      INSERT INTO hlh_giftcard (SchemaID,
-      CardName,
-      CardNO,
-      ExchgCode,
-      SalePrice,
-      CreateBy,
-      CreateDate,
-      LastUpdBy,
-      LastUpdDt)
-        VALUES (pi_SchemaID, pi_CardName, l_carno, l_ExchgCode, l_SalePrice, pi_CreateBy, SYSDATE(), pi_CreateBy, SYSDATE());
-      /*获取id*/
-      SELECT
-        @@identity INTO l_lastcardid;
-      /*更新验证码库*/
-      UPDATE hlh_exchgcodestck he
-      SET he.ISUsed = 'Y',
-          he.GiftCardID = l_lastcardid,
-          he.LastUpdBy = pi_CreateBy,
-          he.LastUpdDt = SYSDATE()
-      WHERE he.id = l_exchgid;
-
-      SET i = i + 1;
-      IF t_error = 1 THEN
-        ROLLBACK;
-      ELSE
-      COMMIT;
-    END IF;
-
-  END WHILE;
-
-
-
-END
-;;
-DELIMITER ;
-
--- ----------------------------
--- Procedure structure for Gen_giftcardByDispNo
--- ----------------------------
-DROP PROCEDURE IF EXISTS `Gen_giftcardByDispNo`;
-DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Gen_giftcardByDispNo`(IN pi_SchemaID int, IN pi_DispatchID int, IN pi_CreateBy varchar(10), OUT t_error int, OUT t_msg varchar(500))
-BEGIN
-  DECLARE l_SalePrice decimal(8, 2);/*销售价格*/
-  DECLARE l_ExchgCode varchar(10);/*兑换码*/
-  DECLARE l_DispatchNum int(10);/*要生成卡的数量*/
-  DECLARE i int;
-  DECLARE l_exchgid int;/*兑换id*/
-  DECLARE l_lastcardid int;/*最后插入ID*/
-  DECLARE l_CardName varchar(50);/*卡名称*/
-  DECLARE l_CardNo varchar(50);/*卡编号*/
-  DECLARE l_CustomerName varchar(20);/*客户名称*/
-  DECLARE l_cust_id int(10);/*客户id*/
-
-  DECLARE EXIT HANDLER FOR SQLEXCEPTION
-  BEGIN
-    GET DIAGNOSTICS CONDITION 1 t_msg = MESSAGE_TEXT;
-    ROLLBACK;
-    SET t_error = 1;
-  END;
-
-  SET t_error = 0;
-
-  /*获取要生成订单数量*/
-  SELECT
-    DispatchNum,
-    CustomerName,
-    cust_id INTO l_DispatchNum, l_CustomerName, l_cust_id
-  FROM hlh_dispatchorders hd
-  WHERE id = pi_DispatchID;
-
-  /*方案卡的价格*/
-  SELECT
-    price,
-    SchmName INTO l_SalePrice, l_CardName
-  FROM hlh_schema hs
-  WHERE id = pi_SchemaID;
-
-  SET i = 1;
-  START TRANSACTION;
-    /*获取兑换码*/
-    WHILE i <= l_DispatchNum DO
-      SELECT
-        ExchgCode,
-        id INTO l_ExchgCode, l_exchgid
-      FROM hlh_exchgcodestck
-      WHERE ISUsed = 'N'
-      LIMIT 1;
-
-      CALL Gen_CodeNoByRule('002', l_CardNo);
-
-      INSERT INTO hlh_giftcard (DispatchID, SchemaID,
-      CardName,
-      CardNO,
-      ExchgCode,
-      SalePrice,
-      CreateBy,
-      CreateDate,
-      LastUpdBy,
-      LastUpdDt,
-      CustomerName,
-      cust_id)
-        VALUES (pi_DispatchID, pi_SchemaID, l_CardName, l_CardNo, l_ExchgCode, l_SalePrice, pi_CreateBy, SYSDATE(), pi_CreateBy, SYSDATE(), l_CustomerName, l_cust_id);
-      /*获取id*/
-      SELECT
-        @@identity INTO l_lastcardid;
-      /*更新兑换库*/
-      UPDATE hlh_exchgcodestck he
-      SET he.ISUsed = 'Y',
-          he.GiftCardID = l_lastcardid,
-          he.LastUpdBy = pi_CreateBy,
-          he.LastUpdDt = SYSDATE()
-      WHERE he.id = l_exchgid;
-
-      SET i = i + 1;
-
-    END WHILE;
-    /*更新派工工单信息*/
-    UPDATE hlh_dispatchorders
-    SET SchemaID = pi_SchemaID,
-        DispatchOrdStatus = 'GNC',
-        LastUpdBy = pi_CreateBy,
-        LastUpdDt = SYSDATE(),
-        GenCardNum = IFNULL(GenCardNum, 0) + i - 1
-    WHERE id = pi_DispatchID;
-    IF t_error = 1 THEN
-      ROLLBACK;
-    ELSE
-    COMMIT;
-  END IF;
-END
-;;
-DELIMITER ;
-
--- ----------------------------
--- Function structure for currval
--- ----------------------------
-DROP FUNCTION IF EXISTS `currval`;
-DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` FUNCTION `currval`(v_seq_name VARCHAR(50)) RETURNS int(11)
-BEGIN
-   DECLARE value   integer;
-   SET value = 0;
-
-   SELECT current_val
-   INTO value
-   FROM hlh_sequence
-   WHERE seq_name = v_seq_name;
-
-   RETURN value;
-END
-;;
-DELIMITER ;
-
--- ----------------------------
--- Function structure for nextval
--- ----------------------------
-DROP FUNCTION IF EXISTS `nextval`;
-DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` FUNCTION `nextval`(v_seq_name VARCHAR(50)) RETURNS int(11)
-BEGIN
-   UPDATE hlh_sequence
-   SET current_val = current_val + increment_val
-   WHERE seq_name = v_seq_name;
-
-   RETURN currval(v_seq_name);
-END
-;;
-DELIMITER ;
 SET FOREIGN_KEY_CHECKS=1;

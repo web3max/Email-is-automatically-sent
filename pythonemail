@@ -1,0 +1,39 @@
+#!/bin/sh
+#chkconfig: 23456 80 90
+#description:auto_run
+lock="subscription.py"
+start(){
+        echo "service start...."
+        su root -c "/usr/bin/python /phpstudy/www/project/pythonemail/Subscription/subscription.py &"
+}
+stop(){
+    echo "service stop...." pkill -f $lock
+}
+status(){
+        if [ -e $lock ];then
+            echo "$0 service start"
+        else
+            echo "$0 service stop"
+        fi
+}
+restart(){
+        stop
+        start
+}
+case "$1" in
+"start")
+        start
+        ;;
+"stop")
+        stop
+        ;;
+"status")
+        status
+        ;;
+"restart")
+        restart
+        ;;
+*)
+        echo "$0 start|stop|status|restart"
+        ;;
+esac
