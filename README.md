@@ -32,8 +32,33 @@ windows 安装时pip默认安装；自定义安装请勾选安装pip选项
 **2. Linux命令行模式下查看Python安装路径**
 * which python
 
+### 7. 使用SQLAlchemy创建数据模型
+**1. pymysql**
 
-#### Centos7搭建Python3.6开发环境
+```
+sqlacodegen mysql+pymysql://max:ZHLH653155073@119.29.175.124:3306/pythonemail > models.py
+```
+也可以导出某一张表的数据模型
+
+```
+sqlacodegen mysql+pymysql://root:653155073@192.168.0.107:3306/pyemail --tables test_user > models.py
+```
+
+
+**2. sqlalchemy**
+
+```
+sqlacodegen mysql+mysqlconnector://max:ZHLH653155073@119.29.175.124:3306/pythonemail > models.py
+```
+也可以导出某一张表的数据模型
+
+```
+sqlacodegen mysql+mysqlconnector://root:653155073@192.168.0.107:3306/pyemail --tables test_user>models.py
+```
+
+
+
+## Centos7搭建Python3.6开发环境
 > **Tip:**
 > - 文件编辑尽量使用vi操作,可以避免linux和windows字符编码不一致带来的问题
 
