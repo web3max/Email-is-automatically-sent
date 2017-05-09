@@ -44,7 +44,7 @@ for msg in msg_queue.listen():
             sendMsg = email.sed_email(giftCard.HlhGiftcard, giftCard.HlhGiftcardexchg, mnsSetting)
             # 插入邮件发送记录
             select.insert_mnssublog(info, sendMsg)
-            # 关闭数据库链接
+            # 关闭数据库链接.
             select.finish()
 		except Exception as e:
 			logger = logging.getLogger(__name__)
