@@ -26,22 +26,35 @@ msg_queue.subscribe(channel)
 
 # 订阅监听
 for msg in msg_queue.listen():
-    if msg['type'] == 'message':
-        info = json.loads(msg['data'])
-        # 创建查询对象
-        select = Db()
-        # 查询V卡信息,兑换信息
-        giftCard = select.select_gift_card(info['Giftcard'])
-        # 查询V卡方案名称
-        giftCard.HlhGiftcard.schmName = select.select_schema(giftCard.HlhGiftcard.SchemaID)
-        # 查询主题信息
-        mnsSetting = select.select_mnssetting(info['MNSCode'])
-        # 创建发送邮件对象,传入收件人邮箱地址
-        # 群发则传入list
-        email = Email('********@qq.com')
-        # 传入V卡信息、兑换信息、频道信息;发送邮件
-        sendMsg = email.sed_email(giftCard.HlhGiftcard, giftCard.HlhGiftcardexchg, mnsSetting)
-        # 插入邮件发送记录
-        select.insert_mnssublog(info, sendMsg)
-        # 关闭数据库链接
-        select.finish()
+	if msg['type'] == 'message':
+		try:
+            info = json.loads(msg['data'])
+            # 创建查询对象
+            select = Db()
+            # 查询V卡信息,兑换信息
+            giftCard = select.select_gift_card(info['Giftcard'])
+            # 查询V卡方案名称
+            giftCard.HlhGiftcard.schmName = select.select_schema(giftCard.HlhGiftcard.SchemaID)
+            # 查询主题信息
+            mnsSetting = select.select_mnssetting(info['MNSCode'])
+            # 创建发送邮件对象,传入收件人邮箱地址
+            # 群发则传入list
+            email = Email('********@qq.com')
+            # 传入V卡信息、兑换信息、频道信息;发送邮件
+            sendMsg = email.sed_email(giftCard.HlhGiftcard, giftCard.HlhGiftcardexchg, mnsSetting)
+            # 插入邮件发送记录
+            select.insert_mnssublog(info, sendMsg)
+            # 关闭数据库链接
+            select.finish()
+		except Exception as e:
+			logger = logging.getLogger(__name__)
+			logger.setLevel(level=logging.INFO)
+			handler = logging.FileHandler("log.txt")
+			handler.setLevel(logging.INFO)
+			formatter = logging.Formatter('%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s')
+			handler.setFormatter(formatter)
+			logger.addHandler(handler)
+			logger.info("Start print log")
+			logger.debug("Do something")
+			logger.warning("Something maybe fail.")
+			logger.info("Finish")
