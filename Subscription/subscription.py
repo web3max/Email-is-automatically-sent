@@ -4,6 +4,7 @@ import sys
 sys.path.append("E:\Python\Redis-publishes-subscriptions")  # 导入自己编写的模块，填入项目模块对应存放路径
 from Model.redisDb import *
 import json
+import logging
 from Model.db import *
 from Mail.htmlemail import *
 from Conf.config import Config # 引入配置文件
@@ -26,8 +27,8 @@ msg_queue.subscribe(channel)
 
 # 订阅监听
 for msg in msg_queue.listen():
-	if msg['type'] == 'message':
-		try:
+    if msg['type'] == 'message':
+        try:
             info = json.loads(msg['data'])
             # 创建查询对象
             select = Db()
@@ -46,15 +47,15 @@ for msg in msg_queue.listen():
             select.insert_mnssublog(info, sendMsg)
             # 关闭数据库链接.
             select.finish()
-		except Exception as e:
-			logger = logging.getLogger(__name__)
-			logger.setLevel(level=logging.INFO)
-			handler = logging.FileHandler("log.txt")
-			handler.setLevel(logging.INFO)
-			formatter = logging.Formatter('%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s')
-			handler.setFormatter(formatter)
-			logger.addHandler(handler)
-			logger.info("Start print log")
-			logger.debug("Do something")
-			logger.warning("Something maybe fail.")
-			logger.info("Finish")
+        except Exception as e:
+            logger = logging.getLogger(__name__)
+            logger.setLevel(level=logging.INFO)
+            handler = logging.FileHandler("log.txt")
+            handler.setLevel(logging.INFO)
+            formatter = logging.Formatter('%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s')
+            handler.setFormatter(formatter)
+            logger.addHandler(handler)
+            logger.info("Start print log")
+            logger.debug("Do something")
+            logger.warning("Something maybe fail.")
+            logger.info("Finish")
