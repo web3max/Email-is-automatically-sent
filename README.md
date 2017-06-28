@@ -1,6 +1,6 @@
 ![Contrast](http://upload-images.jianshu.io/upload_images/6171922-b9f0e2cc255018ee.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 结合 Python、MySQL、Redis 发布订阅功能，实现 Email 自动发送.首先要在 Centos7 上搭建 Python3.6 开发环境.
-##1. Centos7 上搭建 Python3.6 开发环境
+## 1. Centos7 上搭建 Python3.6 开发环境
 > **Tip:**
 >
 > 文件编辑尽量使用vi操作,可以避免 linux 和 windows 字符编码不一致带来的问题
