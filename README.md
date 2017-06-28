@@ -1,68 +1,12 @@
-# Email-is-automatically-sent
-结合Python、MySQL、Redis发布订阅功能，实现Email自动发送
+结合 Python、MySQL、Redis 发布订阅功能，实现 Email 自动发送.
 
-### 1. 安装pip
-windows 安装时pip默认安装；自定义安装请勾选安装pip选项
-
-### 2. 查看pip版本
-* pip -V
-
-### 3. 使用pip安装以下库
-* pip install sqlacodegen
-* pip install mysql-connector==2.1.4
-* pip install sqlalchemy
-* pip install redis
-* pip install requests
-* pip install setuptools
-
-### 4. 查看已安装的库
-* pip list
-
-### 5. 查看Python版本
-* python -V
-
-### 6. 查看Python安装路径
-**1. Python交互模式下查看Python安装路径**
-```
-    >>> import sys
-    >>> path = sys.executable
-    >>> print(path)
-```
-
-**2. Linux命令行模式下查看Python安装路径**
-* which python
-
-### 7. 使用SQLAlchemy创建数据模型
-**1. pymysql**
-
-```
-sqlacodegen mysql+pymysql://max:ZHLH653155073@119.29.175.124:3306/pythonemail > models.py
-```
-也可以导出某一张表的数据模型
-
-```
-sqlacodegen mysql+pymysql://root:653155073@192.168.0.107:3306/pyemail --tables test_user > models.py
-```
-
-
-**2. sqlalchemy**
-
-```
-sqlacodegen mysql+mysqlconnector://max:ZHLH653155073@119.29.175.124:3306/pythonemail > models.py
-```
-也可以导出某一张表的数据模型
-
-```
-sqlacodegen mysql+mysqlconnector://root:653155073@192.168.0.107:3306/pyemail --tables test_user>models.py
-```
-
-
-
-## Centos7搭建Python3.6开发环境
+首先要在 Centos7 上搭建 Python3.6 开发环境
+##1. Centos7 上搭建 Python3.6 开发环境
 > **Tip:**
-> - 文件编辑尽量使用vi操作,可以避免linux和windows字符编码不一致带来的问题
+>
+> 文件编辑尽量使用vi操作,可以避免 linux 和 windows 字符编码不一致带来的问题
 
-**1. 一键安装脚本,包含许多必需库,不需要中途再次重新编译**
+**1. 这里我找到了一个一键安装脚本,安装脚本包含许多必需库,不需要中途再次重新编译**
 
 ```
 wget https://raw.githubusercontent.com/LunacyZeus/Python3.6-for-Centos7.0/master/install.sh && sh install.sh
@@ -96,7 +40,7 @@ make&& make install
 
 echo "好了,你的Python3.6 for Centos7.0之旅正式开始啦~"
 ```
-> **Tip: CentOS查找目录或文件**
+> **Tip: CentOS 查找目录或文件**
 > - 查找目录：find / -name '查找关键字' -type d
 > - 查找文件：find / -name python -print
 > - find / -name "pip3*"
@@ -104,7 +48,7 @@ echo "好了,你的Python3.6 for Centos7.0之旅正式开始啦~"
 > - whereis python3
 > - which python3
 
-**2. 命令创建Python软连接**
+**2. 命令创建 Python 软连接**
 
 ```
 mv  python python.backup
@@ -115,7 +59,7 @@ ln -s /usr/local/bin/python3.6 /usr/bin/python3
 python -V
 ```
 
-**3. 更改yum脚本的python依赖**
+**3. 更改 yum 脚本的 python 依赖**
 
 ```
 cd /usr/bin
@@ -124,34 +68,34 @@ yum yum-config-manager yum-debug-restore yum-groups-manager
 yum-builddep yum-debug-dump yumdownloader
 ```
 
-更改以上文件头,把 #!/usr/bin/python 改为 #!/usr/bin/python2
+更改以上文件头,把 **#!/usr/bin/python** 改为 **#!/usr/bin/python2**
 
-**4. 修改gnome-tweak-tool配置文件**
+**4. 修改 gnome-tweak-tool 配置文件**
 
 ```
 # vi /usr/bin/gnome-tweak-tool
 ```
 
-把文件头 #!/usr/bin/python 改为 #!/usr/bin/python2
+把文件头 **#!/usr/bin/python** 改为 **#!/usr/bin/python2**
 
-**5. 修改urlgrabber配置文件**
+**5. 修改 urlgrabber 配置文件**
 
 ```
 # vi /usr/libexec/urlgrabber-ext-down
 ```
 
-把文件头 #!/usr/bin/python 改为 #!/usr/bin/python2
+把文件头 **#!/usr/bin/python** 改为 **#!/usr/bin/python2**
 
-**6. 新建pip的软连接**
+**6. 新建 pip 的软连接**
 ```
 mv /usr/bin/pip /usr/bin/pip.bak
 cp /usr/local/bin/pip3 /usr/bin/pip
 
-# 查看pip是否安装成功
+# 查看pip是否安装成功,查看pip版本
 pip -V
 ```
 
-**7. 使用pip安装以下库**
+**7. 使用 pip 安装以下库**
 
 ```
 pip install sqlacodegen
@@ -161,9 +105,43 @@ pip install redis
 pip install requests
 pip install setuptools
 pip install pymysql
-
-# 查看已安装的库
+```
+**8. 查看已安装的库**
+```
 pip list
+```
+
+## 2. 查看Python安装路径
+**1. Python交互模式下查看Python安装路径**
+```
+    >>> import sys
+    >>> path = sys.executable
+    >>> print(path)
+```
+
+**2. Linux命令行模式下查看Python安装路径**
+* which python
+
+## 3. 使用SQLAlchemy创建数据模型
+**1. pymysql**
+```
+sqlacodegen mysql+pymysql://max:ZHLH653155073@119.29.175.124:3306/pythonemail > models.py
+```
+也可以导出某一张表的数据模型
+
+```
+sqlacodegen mysql+pymysql://root:653155073@192.168.0.107:3306/pyemail --tables test_user > models.py
+```
+
+
+**2. sqlalchemy**
+
+```
+sqlacodegen mysql+mysqlconnector://max:ZHLH653155073@119.29.175.124:3306/pythonemail > models.py
+```
+也可以导出某一张表的数据模型
+```
+sqlacodegen mysql+mysqlconnector://root:653155073@192.168.0.107:3306/pyemail --tables test_user>models.py
 ```
 **8. 开机自动启动脚本pythonemail**
 
@@ -210,12 +188,11 @@ esac
 ```
 把脚本 pythonemail 放入 /etc/rc.d/init.d 文件夹下
 > **Tip:**
-> - 脚本可以先执行一下看看报不报错
-> ```
+> 脚本可以先执行一下看看报不报错
+> 
 > cd /etc/rc.d/init.d
 > chmod +x pythonemail
 > ./pythonemail start
-> ```
 
 
 **9. 赋予脚本权限**
@@ -228,24 +205,17 @@ chkconfig --list pythonemail
 这样脚本开机就会自动运行
 
 > **也可以后台静默执行,每一次重新开机启动需要重新执行命令**
-> ```
+> 
 > cd /etc/rc.d/init.d
 > chmod +x pythonemail
 > nohup ./pythonemail start &
 > 回车
 > exit
-> ```
+> 
 > 不能直接关闭shell窗口,不然不会在后台静默执行,一定要exit退出登录后,再关闭shell窗口
 
 > **Tip:**
 > - CentOS重启命令：reboot
 > - 如果邮件发送不出去也有可能是服务器端口的问题，需要在服务器安全组中打开对应的端口
 
-
-
-
-
-
-
-
-
+[**结合 Python、MySQL、Redis 发布订阅功能，实现 Email 自动发送的源码**](https://github.com/longhuicode/Email-is-automatically-sent),我已经放到 Github 上去了,源码中有详细的注释说明,欢迎大家提意见.
