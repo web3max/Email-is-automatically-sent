@@ -1,6 +1,5 @@
-结合 Python、MySQL、Redis 发布订阅功能，实现 Email 自动发送.
-
-首先要在 Centos7 上搭建 Python3.6 开发环境
+![Contrast](http://upload-images.jianshu.io/upload_images/6171922-b9f0e2cc255018ee.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+结合 Python、MySQL、Redis 发布订阅功能，实现 Email 自动发送.首先要在 Centos7 上搭建 Python3.6 开发环境.
 ##1. Centos7 上搭建 Python3.6 开发环境
 > **Tip:**
 >
@@ -125,7 +124,7 @@ pip list
 ## 3. 使用SQLAlchemy创建数据模型
 **1. pymysql**
 ```
-sqlacodegen mysql+pymysql://max:ZHLH653155073@119.29.175.124:3306/pythonemail > models.py
+sqlacodegen mysql+pymysql://root:653155073@192.168.0.107:3306/pythonemail > models.py
 ```
 也可以导出某一张表的数据模型
 
@@ -137,13 +136,13 @@ sqlacodegen mysql+pymysql://root:653155073@192.168.0.107:3306/pyemail --tables t
 **2. sqlalchemy**
 
 ```
-sqlacodegen mysql+mysqlconnector://max:ZHLH653155073@119.29.175.124:3306/pythonemail > models.py
+sqlacodegen mysql+mysqlconnector://root:653155073@192.168.0.107:3306/pythonemail > models.py
 ```
 也可以导出某一张表的数据模型
 ```
 sqlacodegen mysql+mysqlconnector://root:653155073@192.168.0.107:3306/pyemail --tables test_user>models.py
 ```
-**8. 开机自动启动脚本pythonemail**
+## 4. 开机自动启动脚本pythonemail
 
 ```
 #!/bin/sh
@@ -195,7 +194,7 @@ esac
 > ./pythonemail start
 
 
-**9. 赋予脚本权限**
+**赋予脚本权限**
 ```
 cd /etc/rc.d/init.d
 chmod +x pythonemail
